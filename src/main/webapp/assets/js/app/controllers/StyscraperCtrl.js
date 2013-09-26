@@ -14,7 +14,20 @@
 	 */
 	controllers.controller("StyscraperCtrl", function($scope, $rootScope, $log, StyscraperService) {
 
-		
+		$scope.getContent = function() {
+			var url;
+
+			url = $scope.url;
+
+			$log.log("StyscraperCtrl: getContent - url = " + url);
+
+			StyscraperService.getContent(url).success(function(data, headers) {
+				$scope.numberOfPages = data.numberOfPages;
+				$scope.entities = data.entities;
+			}).error(function(error) {
+				$rootScope.$broadcast("error", {"msg": "Error getting content"});
+			});
+		};
 
 	});
 

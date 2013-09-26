@@ -17,16 +17,38 @@
 	</head>
 
 	<body>
-		<div id="bodyContainer">
+		<div class="bodyContainer">
 			<header>
+				<div class="row-fluid">
+					<div class="span12">
+						Styscraper
+					</div>
+				</div>
 			</header>
 
-			<div id="contentContainer">
-				<div class="pageHeader">
-					Styscraper
-				</div>
+			<div class="contentContainer">
 				<div ng-app="styscraper.App">
-					Home
+					<div ng-controller="StyscraperCtrl">
+						<div class="row-fluid">
+							<div class="span12" ng-controller="AlertCtrl">
+								<div ng-repeat="alert in alerts" class="alert alert-{{alert.type}}">
+									<button type="button" class="close" data-dismiss="alert" ng-click="closeAlert(alert.key)">&times;</button>
+									{{alert.msg}}
+								</div>
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span12">
+								<form name="entitySearchForm">
+									<div class="control-group">
+										<label id="url">URL</label>
+										<input type="text" id="url" name="url" ng-model="url" />
+										<button ng-click="getContent()" class="btn btn-primary">Search</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -41,6 +63,7 @@
 		<script src="<c:url value="/assets/js/app/services/services.js" />"></script>
 		<script src="<c:url value="/assets/js/app/services/StyscraperService.js" />"></script>
 		<script src="<c:url value="/assets/js/app/controllers/controllers.js" />"></script>
+		<script src="<c:url value="/assets/js/app/controllers/AlertCtrl.js" />"></script>
 		<script src="<c:url value="/assets/js/app/controllers/StyscraperCtrl.js" />"></script>
 	</body>
 </html>
