@@ -36,7 +36,7 @@
 							</div>
 						</div>
 					</div>
-					<div ng-controller="StyscraperCtrl">
+					<div ng-controller="ContentCtrl">
 						<div class="row-fluid">
 							<div class="span12">
 								<form name="urlForm">
@@ -71,6 +71,6 @@
 		<script src="<c:url value="/assets/js/app/services/StyscraperService.js" />"></script>
 		<script src="<c:url value="/assets/js/app/controllers/controllers.js" />"></script>
 		<script src="<c:url value="/assets/js/app/controllers/AlertCtrl.js" />"></script>
-		<script src="<c:url value="/assets/js/app/controllers/StyscraperCtrl.js" />"></script>
+		<script src="<c:url value="/assets/js/app/controllers/ContentCtrl.js" />"></script>
 	</body>
 </html>

@@ -10,16 +10,16 @@
 	controllers = rlng.module("styscraper.Controllers");
 
 	/**
-	 * Defines a controller for managing taxonomies.
+	 * Defines a controller for managing retrieiving and displaying content from remote URLs.
 	 */
-	controllers.controller("StyscraperCtrl", function($scope, $rootScope, $log, StyscraperService) {
+	controllers.controller("ContentCtrl", function($scope, $rootScope, $log, StyscraperService) {
 
 		$scope.getContent = function() {
 			var url;
 
 			url = $scope.url;
 
-			$log.log("StyscraperCtrl: getContent - url = " + url);
+			$log.log("ContentCtrl: getContent - url = " + url);
 
 			StyscraperService.getContent(url).success(function(data, headers) {
 				$scope.content = data.content;
