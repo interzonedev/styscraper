@@ -3,6 +3,8 @@ package com.interzonedev.styscraper.web;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONObject;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.interzonedev.styscraper.service.ContentService;
+
 import ch.qos.logback.classic.Logger;
 
 @Controller
@@ -23,24 +27,28 @@ public class ContentController {
 
 	private final Logger log = (Logger) LoggerFactory.getLogger(getClass());
 
+	@Inject
+	@Named("contentService")
+	private ContentService contentService;
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<String> getContent(
 			@RequestParam(value = "url", required = true) String url) {
 
 		log.debug("getContent: Start - url = " + url);
 
-		HttpStatus httpStatus = HttpStatus.OK;
+		String content = contentService.getAndCleanContent(url);
 
 		Map<String, Object> responseMap = new HashMap<String, Object>();
-		responseMap.put("content", "stuff");
+		responseMap.put("content", content);
 
 		JSONObject jsonObject = new JSONObject(responseMap);
 		String json = jsonObject.toJSONString();
 
 		ResponseEntity<String> responseEntity = new ResponseEntity<String>(
-				json, httpStatus);
+				json, HttpStatus.OK);
 
-		log.debug("getContent: End - httpStatus = " + httpStatus);
+		log.debug("getContent: End");
 
 		return responseEntity;
 
