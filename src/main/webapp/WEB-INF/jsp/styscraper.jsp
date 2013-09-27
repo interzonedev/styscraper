@@ -28,24 +28,31 @@
 
 			<div class="contentContainer">
 				<div ng-app="styscraper.App">
+					<div class="row-fluid">
+						<div class="span12" ng-controller="AlertCtrl">
+							<div ng-repeat="alert in alerts" class="alert alert-{{alert.type}}">
+								<button type="button" class="close" data-dismiss="alert" ng-click="closeAlert(alert.key)">&times;</button>
+								{{alert.msg}}
+							</div>
+						</div>
+					</div>
 					<div ng-controller="StyscraperCtrl">
 						<div class="row-fluid">
-							<div class="span12" ng-controller="AlertCtrl">
-								<div ng-repeat="alert in alerts" class="alert alert-{{alert.type}}">
-									<button type="button" class="close" data-dismiss="alert" ng-click="closeAlert(alert.key)">&times;</button>
-									{{alert.msg}}
-								</div>
+							<div class="span12">
+								<form name="urlForm">
+									<div class="control-group" ng-class="{error: urlForm.url.$invalid}">
+										<label id="url">URL</label>
+										<input type="url" id="url" name="url" ng-model="url" required />
+										<span ng-show="urlForm.url.$error.required" class="help-inline">Required</span>
+										<span ng-show="urlForm.url.$error.url" class="help-inline">Not a URL</span>
+										<button ng-click="getContent()" ng-disabled="urlForm.$invalid" class="btn-mini btn-primary">Get Content</button>
+									</div>
+								</form>
 							</div>
 						</div>
 						<div class="row-fluid">
 							<div class="span12">
-								<form name="entitySearchForm">
-									<div class="control-group">
-										<label id="url">URL</label>
-										<input type="text" id="url" name="url" ng-model="url" />
-										<button ng-click="getContent()" class="btn btn-primary">Search</button>
-									</div>
-								</form>
+								<div>{{content}}</div>
 							</div>
 						</div>
 					</div>

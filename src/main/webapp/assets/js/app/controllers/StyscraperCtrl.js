@@ -23,9 +23,13 @@
 
 			StyscraperService.getContent(url).success(function(data, headers) {
 				$scope.content = data.content;
-				$rootScope.$broadcast("success", {"msg": data.content});
+				$rootScope.$broadcast("alert", {
+					"type": "success", "msg": "Retrieved content from " + url
+				});
 			}).error(function(error) {
-				$rootScope.$broadcast("error", {"msg": "Error getting content"});
+				$rootScope.$broadcast("alert", {
+					"msg": "Error getting content"
+				});
 			});
 		};
 

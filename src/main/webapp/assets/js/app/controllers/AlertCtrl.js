@@ -56,8 +56,8 @@
 		$scope.alerts = {};
 		$scope.numAlerts = 0;
 
-		// Listen for error events and display an alert when one is received.
-		$scope.$on("error", function(evt, data) {
+		// Listen for alert events and display an alert when one is received.
+		$scope.$on("alert", function(evt, data) {
 			$log.log("AlertCtrl: " + evt.name + " - data = " + angular.toJson(data, true));
 			addAlert(data);
 		});
