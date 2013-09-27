@@ -22,8 +22,8 @@
 			$log.log("StyscraperCtrl: getContent - url = " + url);
 
 			StyscraperService.getContent(url).success(function(data, headers) {
-				$scope.numberOfPages = data.numberOfPages;
-				$scope.entities = data.entities;
+				$scope.content = data.content;
+				$rootScope.$broadcast("success", {"msg": data.content});
 			}).error(function(error) {
 				$rootScope.$broadcast("error", {"msg": "Error getting content"});
 			});

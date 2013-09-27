@@ -23,7 +23,7 @@
 		 *          asynchronously when the request completes.
 		 */
 		this.getContent = function(url) {
-			return $http.get(endpointsUrlPrefix + "/getContent?url=" + encodeURIComponent(url));
+			return $http.get(endpointsUrlPrefix + "/content?url=" + encodeURIComponent(url));
 		};
 
 	});

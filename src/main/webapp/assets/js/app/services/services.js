@@ -10,7 +10,6 @@
 	services = rlng.module("styscraper.Services", []);
 
 	// Set constants to be used by all application wide services. 
-	services.constant("endpointsUrlPrefix", "/styscraper");
-
+	services.constant("endpointsUrlPrefix", "");
 
 }());
