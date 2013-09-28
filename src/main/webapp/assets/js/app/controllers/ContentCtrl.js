@@ -17,15 +17,24 @@
 		$scope.getContent = function() {
 			var url;
 
+			$scope.content = "";
+
 			url = $scope.url;
 
 			$log.log("ContentCtrl: getContent - url = " + url);
 
 			StyscraperService.getContent(url).success(function(data, headers) {
-				$scope.content = data.content;
-				$rootScope.$broadcast("alert", {
-					"type": "success", "msg": "Retrieved content from " + url
-				});
+				if (data.content) {
+					$scope.content = data.content;
+					$rootScope.$broadcast("alert", {
+						"type": "success",
+						"msg": "Retrieved content from " + url
+					});
+				} else {
+					$rootScope.$broadcast("alert", {
+						"msg": "Unable to retrieve content from " + url
+					});
+				}
 			}).error(function(error) {
 				$rootScope.$broadcast("alert", {
 					"msg": "Error getting content"
