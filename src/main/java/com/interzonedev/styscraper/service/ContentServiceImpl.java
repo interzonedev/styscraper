@@ -17,6 +17,7 @@ import com.interzonedev.httpagent.Method;
 import com.interzonedev.httpagent.Request;
 import com.interzonedev.httpagent.RequestService;
 import com.interzonedev.httpagent.Response;
+import com.interzonedev.styscraper.service.cleaner.ContentCleaner;
 
 @Named("contentService")
 public class ContentServiceImpl implements ContentService {
@@ -51,17 +52,22 @@ public class ContentServiceImpl implements ContentService {
 				return null;
 			}
 
+			ContentCleaner contentCleaner = getContentCleaner(host);
+
 			Request request = new Request(url, Method.GET, null, null);
 
 			Future<Response> responseFuture = requestService.doRequest(request);
 
 			log.debug("getAndCleanContent: Waiting for response");
-			Response response = responseFuture.get(timeoutMillis,
-					TimeUnit.MILLISECONDS);
+			Response response = responseFuture.get(timeoutMillis, TimeUnit.MILLISECONDS);
 
-			log.debug("getAndCleanContent: Got a response with status "
-					+ response.getStatus());
-			return response.getContent();
+			log.debug("getAndCleanContent: Got a response with status " + response.getStatus());
+
+			String content = response.getContent();
+
+			String cleanContent = contentCleaner.cleanContent(content);
+
+			return cleanContent;
 
 		} catch (Exception e) {
 
@@ -76,6 +82,17 @@ public class ContentServiceImpl implements ContentService {
 	public String getAndCleanContent(String url) {
 
 		return getAndCleanContent(url, DEFAULT_TIMEOUT_MILLIS);
+
+	}
+
+	private ContentCleaner getContentCleaner(String host) {
+
+		switch (host) {
+			case "www.atimes.com":
+				return (ContentCleaner) applicationContext.getBean("asiaTimesContentCleaner");
+			default:
+				throw new IllegalArgumentException("Unsupported host: " + host);
+		}
 
 	}
 
