@@ -12,7 +12,7 @@
         var alertDefaults, addAlert;
 
         alertDefaults = {
-            type: "error",
+            type: "danger",
             closeMillis: 3000
         };
 
@@ -22,7 +22,7 @@
          * 
          * @param {Object} alert The alert to dislay.  The following properties are valid:
          *                       msg: The text of the alert.
-         *                       type: The type of alert (error, warn, info, success).
+         *                       type: The type of alert (danger, warning, info, success).
          *                       closeMillis: If greater than zero, the amount of time the alert should display before
          *                                automatically closing.
          */

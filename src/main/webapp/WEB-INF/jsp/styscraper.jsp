@@ -7,53 +7,51 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <title>Styscraper</title>
 
         <link rel="icon" href="<c:url value="/assets/img/favicon.png" />" type="image/png" />
 
-        <link rel="stylesheet" href="<c:url value="/assets/css/lib/bootstrap/bootstrap.min.css" />" />
-        <link rel="stylesheet" href="<c:url value="/assets/css/app/main.css" />" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     </head>
 
     <body>
-        <div class="bodyContainer">
+        <div class="container lead">
             <header>
-                <div class="row-fluid">
-                    <div class="span12">
-                        Styscraper
-                    </div>
+                <div class="page-header">
+                    <h1>Styscraper</h1>
                 </div>
             </header>
 
-            <div class="contentContainer">
-                <div ng-app="styscraper.App">
-                    <div class="row-fluid">
-                        <div class="span12" ng-controller="AlertCtrl">
+            <div ng-app="styscraper.App">
+                <div ng-controller="AlertCtrl">
+                    <div class="row">
+                        <div class="col-xs-12">
                             <div ng-repeat="alert in alerts" class="alert alert-{{alert.type}}">
                                 <button type="button" class="close" data-dismiss="alert" ng-click="closeAlert(alert.key)">&times;</button>
                                 {{alert.msg}}
                             </div>
                         </div>
-                    </div>
-                    <div ng-controller="ContentCtrl">
-                        <div class="row-fluid">
-                            <div class="span12">
-                                <form name="urlForm">
-                                    <div class="control-group" ng-class="{error: urlForm.url.$invalid}">
-                                        <label id="url">URL</label>
-                                        <input type="url" id="url" name="url" ng-model="url" required />
-                                        <span ng-show="urlForm.url.$error.required" class="help-inline">Required</span>
-                                        <span ng-show="urlForm.url.$error.url" class="help-inline">Not a URL</span>
-                                        <button ng-click="getContent()" ng-disabled="urlForm.$invalid" class="btn-mini btn-primary">Get Content</button>
-                                    </div>
-                                </form>
-                            </div>
+                   </div>
+                </div>
+                <div ng-controller="ContentCtrl">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form name="urlForm" role="form">
+                                <div class="form-group" ng-class="{'has-error': urlForm.url.$invalid, 'has-success': !urlForm.url.$invalid}">
+                                    <label class="control-label" for="url">URL</label>
+                                    <input type="url" class="form-control" id="url" name="url" ng-model="url" required />
+                                    <span ng-show="urlForm.url.$error.required" class="text-danger">Required</span>
+                                    <span ng-show="urlForm.url.$error.url" class="text-danger">Not a URL</span>
+                                </div>
+                                <button ng-click="getContent()" ng-disabled="urlForm.$invalid" class="btn btn-primary btn-xs">Get Content</button>
+                            </form>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span12">
-                                <div ng-bind-html="content"></div>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div ng-bind-html="content"></div>
                         </div>
                     </div>
                 </div>
@@ -61,7 +59,7 @@
         </div>
 
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-        <script src="<c:url value="/assets/js/lib/bootstrap/bootstrap.min.js" />"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>
