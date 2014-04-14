@@ -5,7 +5,7 @@
 
     // Define (or get if it was already defined) the module in which to register application wide controllers.  This
     // will make all registered controllers available to an application that includes this as a dependency.
-    controllers = rlng.module("styscraper.Controllers");
+    controllers = izng.module("styscraper.Controllers");
 
     // Define the AlertCtrl controller for managing application wide alerts.
     controllers.controller("AlertCtrl", function($scope, $rootScope, $log, $timeout) {

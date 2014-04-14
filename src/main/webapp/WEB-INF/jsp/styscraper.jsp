@@ -63,7 +63,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>
-        <script src="<c:url value="/assets/js/app/rlng.js" />"></script>
+        <script src="<c:url value="/assets/js/app/izng.js" />"></script>
         <script src="<c:url value="/assets/js/app/styscraperApp.js" />"></script>
         <script src="<c:url value="/assets/js/app/directives/directives.js" />"></script>
         <script src="<c:url value="/assets/js/app/services/services.js" />"></script>

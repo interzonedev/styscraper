@@ -1,7 +1,7 @@
 (function(context) {
     "use strict";
 
-    var rlng;
+    var izng;
 
     /**
      * @namespace
@@ -9,7 +9,7 @@
      * Provides an object to be set on the context in which this is run on which to define common utility functions for
      * use with AngularJS.
      */
-    rlng = {
+    izng = {
 
         /**
          * Gets or creates the AngularJS module with the specified name.  First attempts to get the module by name.  If
@@ -31,7 +31,7 @@
 
     };
 
-    // Set the rlng object on the context in which this is run.
-    context.rlng = rlng;
+    // Set the izng object on the context in which this is run.
+    context.izng = izng;
 
 }(this));
