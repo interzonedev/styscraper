@@ -60,11 +60,11 @@
             </div>
         </div>
 
-        <script src="<c:url value="/assets/js/lib/jquery/jquery-2.0.3.min.js" />"></script>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
         <script src="<c:url value="/assets/js/lib/bootstrap/bootstrap.min.js" />"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-        <script src="http://code.angularjs.org/1.2.16/angular-resource.min.js"></script>
-        <script src="http://code.angularjs.org/1.2.16/angular-sanitize.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>
         <script src="<c:url value="/assets/js/app/rlng.js" />"></script>
         <script src="<c:url value="/assets/js/app/styscraperApp.js" />"></script>
         <script src="<c:url value="/assets/js/app/directives/directives.js" />"></script>
