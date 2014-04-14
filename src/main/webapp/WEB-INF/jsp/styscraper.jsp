@@ -52,7 +52,7 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span12">
-                                <div>{{content}}</div>
+                                <div ng-bind-html-unsafe="content"></div>
                             </div>
                         </div>
                     </div>
