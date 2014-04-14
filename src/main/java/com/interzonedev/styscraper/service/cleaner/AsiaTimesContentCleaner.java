@@ -12,7 +12,7 @@ public class AsiaTimesContentCleaner implements ContentCleaner {
             Pattern.CASE_INSENSITIVE);
 
     private final Pattern endContentPattern = Pattern.compile(
-            "</td>\\s*</tr>\\s*</table>\\s*<br>\\s*<br>\\s*<div.+id=\"fb-root\"", Pattern.CASE_INSENSITIVE);
+            "</td>\\s*</tr>\\s*</table>\\s*(<br>\\s*<br>\\s*)?<div.+id=\"fb-root\"", Pattern.CASE_INSENSITIVE);
 
     private final Pattern scriptPattern = Pattern.compile("<script[^>]*>.+</script>", Pattern.CASE_INSENSITIVE
             | Pattern.DOTALL);
