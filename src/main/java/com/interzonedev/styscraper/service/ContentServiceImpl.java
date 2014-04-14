@@ -22,78 +22,78 @@ import com.interzonedev.styscraper.service.cleaner.ContentCleaner;
 @Named("contentService")
 public class ContentServiceImpl implements ContentService {
 
-	private final Logger log = (Logger) LoggerFactory.getLogger(getClass());
+    private final Logger log = (Logger) LoggerFactory.getLogger(getClass());
 
-	private static final long DEFAULT_TIMEOUT_MILLIS = 10000L;
+    private static final long DEFAULT_TIMEOUT_MILLIS = 10000L;
 
-	@Inject
-	@Named("requestService")
-	private RequestService requestService;
+    @Inject
+    @Named("requestService")
+    private RequestService requestService;
 
-	@Inject
-	@Named("knownHosts")
-	private ArrayList<String> knownHosts;
+    @Inject
+    @Named("knownHosts")
+    private ArrayList<String> knownHosts;
 
-	@Inject
-	ApplicationContext applicationContext;
+    @Inject
+    ApplicationContext applicationContext;
 
-	@Override
-	public String getAndCleanContent(String url, long timeoutMillis) {
+    @Override
+    public String getAndCleanContent(String url, long timeoutMillis) {
 
-		log.debug("getAndCleanContent: url = " + url);
+        log.debug("getAndCleanContent: url = " + url);
 
-		try {
+        try {
 
-			URL wrappedUrl = new URL(url);
-			String host = wrappedUrl.getHost();
-			log.debug("getAndCleanContent: host = " + host);
+            URL wrappedUrl = new URL(url);
+            String host = wrappedUrl.getHost();
+            log.debug("getAndCleanContent: host = " + host);
 
-			if (!knownHosts.contains(host)) {
-				return null;
-			}
+            if (!knownHosts.contains(host)) {
+                return null;
+            }
 
-			ContentCleaner contentCleaner = getContentCleaner(host);
+            ContentCleaner contentCleaner = getContentCleaner(host);
 
-			Request request = new Request(url, Method.GET, null, null);
+            Request request = new Request(url, Method.GET, null, null);
 
-			Future<Response> responseFuture = requestService.doRequest(request);
+            Future<Response> responseFuture = requestService.doRequest(request);
 
-			log.debug("getAndCleanContent: Waiting for response");
-			Response response = responseFuture.get(timeoutMillis, TimeUnit.MILLISECONDS);
+            log.debug("getAndCleanContent: Waiting for response");
+            Response response = responseFuture.get(timeoutMillis, TimeUnit.MILLISECONDS);
 
-			log.debug("getAndCleanContent: Got a response with status " + response.getStatus());
+            log.debug("getAndCleanContent: Got a response with status " + response.getStatus());
 
-			String content = response.getContent();
+            String content = response.getContent();
 
-			String cleanContent = contentCleaner.cleanContent(content);
+            String cleanContent = contentCleaner.cleanContent(content);
 
-			return cleanContent;
+            return cleanContent;
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			log.error("Error making request to" + url, e);
-			return null;
+            log.error("Error making request to" + url, e);
+            return null;
 
-		}
+        }
 
-	}
+    }
 
-	@Override
-	public String getAndCleanContent(String url) {
+    @Override
+    public String getAndCleanContent(String url) {
 
-		return getAndCleanContent(url, DEFAULT_TIMEOUT_MILLIS);
+        return getAndCleanContent(url, DEFAULT_TIMEOUT_MILLIS);
 
-	}
+    }
 
-	private ContentCleaner getContentCleaner(String host) {
+    private ContentCleaner getContentCleaner(String host) {
 
-		switch (host) {
-			case "www.atimes.com":
-				return (ContentCleaner) applicationContext.getBean("asiaTimesContentCleaner");
-			default:
-				throw new IllegalArgumentException("Unsupported host: " + host);
-		}
+        switch (host) {
+            case "www.atimes.com":
+                return (ContentCleaner) applicationContext.getBean("asiaTimesContentCleaner");
+            default:
+                throw new IllegalArgumentException("Unsupported host: " + host);
+        }
 
-	}
+    }
 
 }

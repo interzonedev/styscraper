@@ -11,21 +11,20 @@ import com.interzonedev.herokusupport.webserver.WebServerType;
 
 public class Webapp {
 
-	private Logger log = (Logger) LoggerFactory.getLogger(getClass());
+    private Logger log = (Logger) LoggerFactory.getLogger(getClass());
 
-	protected HerokuSupportClient herokuSupportClient = new DefaultHerokuSupportClient();
+    protected HerokuSupportClient herokuSupportClient = new DefaultHerokuSupportClient();
 
-	private void process(String[] args) throws Exception {
-		log.debug("process: Launching Jetty server");
+    private void process(String[] args) throws Exception {
+        log.debug("process: Launching Jetty server");
 
-		WebServerParams webServerParams = new WebServerParams(5003);
+        WebServerParams webServerParams = new WebServerParams(5003);
 
-		herokuSupportClient
-				.startWebServer(WebServerType.JETTY, webServerParams);
-	}
+        herokuSupportClient.startWebServer(WebServerType.JETTY, webServerParams);
+    }
 
-	public static void main(String[] args) throws Exception {
-		(new Webapp()).process(args);
-	}
+    public static void main(String[] args) throws Exception {
+        (new Webapp()).process(args);
+    }
 
 }
