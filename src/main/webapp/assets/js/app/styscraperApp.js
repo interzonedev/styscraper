@@ -4,7 +4,8 @@
     angular.module("styscraper.App", [
         "styscraper.Directives",
         "styscraper.Services",
-        "styscraper.Controllers"
+        "styscraper.Controllers",
+        "ngSanitize"
     ]);
 
 }());

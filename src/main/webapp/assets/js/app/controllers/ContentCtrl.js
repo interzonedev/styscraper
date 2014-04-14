@@ -12,7 +12,7 @@
     /**
      * Defines a controller for managing retrieiving and displaying content from remote URLs.
      */
-    controllers.controller("ContentCtrl", function($scope, $rootScope, $log, StyscraperService) {
+    controllers.controller("ContentCtrl", function($scope, $rootScope, $sce, $log, StyscraperService) {
 
         $scope.getContent = function() {
             var url;
@@ -25,7 +25,7 @@
 
             StyscraperService.getContent(url).success(function(data, headers) {
                 if (data.content) {
-                    $scope.content = data.content;
+                    $scope.content = $sce.trustAsHtml(data.content);
                     $rootScope.$broadcast("alert", {
                         "type": "success",
                         "msg": "Retrieved content from " + url

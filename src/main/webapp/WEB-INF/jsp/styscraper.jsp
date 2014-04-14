@@ -52,7 +52,7 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span12">
-                                <div ng-bind-html-unsafe="content"></div>
+                                <div ng-bind-html="content"></div>
                             </div>
                         </div>
                     </div>
@@ -62,8 +62,9 @@
 
         <script src="<c:url value="/assets/js/lib/jquery/jquery-2.0.3.min.js" />"></script>
         <script src="<c:url value="/assets/js/lib/bootstrap/bootstrap.min.js" />"></script>
-        <script src="<c:url value="/assets/js/lib/angular/angular.js" />"></script>
-        <script src="<c:url value="/assets/js/lib/angular/angular-resource.js" />"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+        <script src="http://code.angularjs.org/1.2.16/angular-resource.min.js"></script>
+        <script src="http://code.angularjs.org/1.2.16/angular-sanitize.min.js"></script>
         <script src="<c:url value="/assets/js/app/rlng.js" />"></script>
         <script src="<c:url value="/assets/js/app/styscraperApp.js" />"></script>
         <script src="<c:url value="/assets/js/app/directives/directives.js" />"></script>
