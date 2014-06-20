@@ -1,5 +1,6 @@
 package com.interzonedev.styscraper.web;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONObject;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,7 +47,11 @@ public class ContentController {
         JSONObject jsonObject = new JSONObject(responseMap);
         String json = jsonObject.toJSONString();
 
-        ResponseEntity<String> responseEntity = new ResponseEntity<String>(json, HttpStatus.OK);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.remove("Content-Type");
+        responseHeaders.setContentType(new MediaType("application", "json", Charset.forName("utf-8")));
+
+        ResponseEntity<String> responseEntity = new ResponseEntity<String>(json, responseHeaders, HttpStatus.OK);
 
         log.debug("getContent: End");
 
