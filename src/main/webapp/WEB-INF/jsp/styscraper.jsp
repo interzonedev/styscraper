@@ -16,6 +16,8 @@
         <link rel="icon" href="<c:url value="/assets/img/favicon.png" />" type="image/png" />
 
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     </head>
 
     <body>
@@ -62,7 +64,6 @@
 
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>
         <script src="<c:url value="/assets/js/app/izng.js" />"></script>
