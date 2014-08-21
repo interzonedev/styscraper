@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <form name="urlForm" role="form">
-                                <div class="form-group" ng-class="{'has-error': urlForm.url.$invalid, 'has-success': !urlForm.url.$invalid}">
+                                <div class="form-group" ng-class="{'has-error': urlForm.url.$invalid, 'has-success': !urlForm.url.$invalid}" ng-cloak>
                                     <label class="control-label" for="url">URL</label>
                                     <input type="url" class="form-control" id="url" name="url" ng-model="url" required />
                                     <span ng-show="urlForm.url.$error.required" class="text-danger">Required</span>
