@@ -29,16 +29,11 @@
             </header>
 
             <div ng-app="styscraper.App">
-                <div ng-controller="AlertCtrl">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div ng-repeat="alert in alerts" class="alert alert-{{alert.type}}" ng-cloak>
-                                <button type="button" class="close" data-dismiss="alert" ng-click="closeAlert(alert.key)">&times;</button>
-                                {{alert.msg}}
-                            </div>
-                        </div>
-                   </div>
-                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <alerts />
+                    </div>
+               </div>
                 <div ng-controller="ContentCtrl">
                     <div class="row">
                         <div class="col-xs-12">
@@ -69,10 +64,10 @@
         <script src="<c:url value="/assets/js/app/izng.js" />"></script>
         <script src="<c:url value="/assets/js/app/styscraperApp.js" />"></script>
         <script src="<c:url value="/assets/js/app/directives/directives.js" />"></script>
+        <script src="<c:url value="/assets/js/app/directives/AlertsDirective.js" />"></script>
         <script src="<c:url value="/assets/js/app/services/services.js" />"></script>
         <script src="<c:url value="/assets/js/app/services/StyscraperService.js" />"></script>
         <script src="<c:url value="/assets/js/app/controllers/controllers.js" />"></script>
-        <script src="<c:url value="/assets/js/app/controllers/AlertCtrl.js" />"></script>
         <script src="<c:url value="/assets/js/app/controllers/ContentCtrl.js" />"></script>
     </body>
 </html>

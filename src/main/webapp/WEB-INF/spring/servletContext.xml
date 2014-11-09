@@ -16,6 +16,7 @@
     <mvc:resources mapping="/assets/**" location="/assets/" />
 
     <mvc:view-controller path="/" view-name="styscraper" />
+    <mvc:view-controller path="/directives/alerts" view-name="directives/alerts" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
