@@ -14,16 +14,23 @@
      */
     controllers.controller("ContentCtrl", function($scope, $rootScope, $sce, $log, StyscraperService) {
 
+        $scope.retrieving = false;
+        $scope.retrievingMessage = null;
+
         $scope.getContent = function() {
             var url;
 
-            $scope.content = "";
-
             url = $scope.url;
+
+            $scope.retrieving = true;
+            $scope.retrievingMessage = "Retrieving content from " + url;
+            $scope.content = "";
 
             $log.log("ContentCtrl: getContent - url = " + url);
 
             StyscraperService.getContent(url).success(function(data, headers) {
+                $scope.retrieving = false;
+                $scope.retrievingMessage = null;
                 if (data.content) {
                     $scope.content = $sce.trustAsHtml(data.content);
                     $rootScope.$broadcast("alert", {
@@ -36,6 +43,8 @@
                     });
                 }
             }).error(function(error) {
+                $scope.retrieving = false;
+                $scope.retrievingMessage = null;
                 $rootScope.$broadcast("alert", {
                     "msg": "Error getting content"
                 });

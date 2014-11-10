@@ -33,8 +33,15 @@
                     <div class="col-xs-12">
                         <alerts />
                     </div>
-               </div>
+                </div>
                 <div ng-controller="ContentCtrl">
+                    <div class="row" ng-show="retrieving">
+                        <div class="col-xs-12">
+                            <div class="alert alert-warning" ng-cloak>
+                                {{retrievingMessage}}
+                            </div>
+                        </div>
+                    </div>               
                     <div class="row">
                         <div class="col-xs-12">
                             <form name="urlForm" role="form" ng-cloak>
