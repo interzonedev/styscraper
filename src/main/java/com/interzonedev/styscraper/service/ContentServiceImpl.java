@@ -90,6 +90,8 @@ public class ContentServiceImpl implements ContentService {
         switch (host) {
             case "www.atimes.com":
                 return (ContentCleaner) applicationContext.getBean("asiaTimesContentCleaner");
+            case "pretendpoint.interzonedev.com":
+                return (ContentCleaner) applicationContext.getBean("passThroughContentCleaner");
             default:
                 throw new IllegalArgumentException("Unsupported host: " + host);
         }

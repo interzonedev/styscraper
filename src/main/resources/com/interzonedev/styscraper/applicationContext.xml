@@ -13,6 +13,7 @@
         <constructor-arg>
             <list>
                 <value type="java.lang.String">www.atimes.com</value>
+                <value type="java.lang.String">pretendpoint.interzonedev.com</value>
             </list>
         </constructor-arg>
     </bean>
